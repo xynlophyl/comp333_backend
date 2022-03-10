@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded"/>
+<title>Sample Submission Form</title>
+</head>
+<body>
+    <!-- form for creating new account -->
+    <form method="POST" action=""> {% csrf_token %}
+      {{ userF.as_p }}
+      <input type="submit" name = "register" value= "Create Account"/>
+    </form>
+    {% if userRet %}
+      <p> {{ userRet }} has been registered </p>
+    {% endif %}
+    <!-- form for getting a user's ratings -->
+    <form method="POST" action=""> {% csrf_token %}
+        {{ ratingF.as_p }}
+        <input type="submit" name = "retrieve_rating" value= "Get Results"/>
+    </form>
+    {% for i in ratingRet %}
+      <p>{{ i }}</p>
+    {% endfor %}
+
+    <!-- form for getting album information -->
+    <form method="POST" action=""> {% csrf_token %}
+      {{ albumF.as_p }}
+      <input type = "submit" name = "retrieve_album" value = "Get Results" />
+    </form>
+    
+    {% if albumRet != None %}
+      {% for album in albumRet%}
+      <p> Album: {{ album.albumTitle }} </p>
+      <p> Artist: {{ album.artistName }} </p>
+      <p> Genre: {{ album.genre }} </p>
+      <p> Year Released: {{ album.yearProduced }} </p>
+      <p> Explicit: {{ album.explicit }} </p>
+      {% endfor %}
+    {% endif %}
+
+</body>
+</html>

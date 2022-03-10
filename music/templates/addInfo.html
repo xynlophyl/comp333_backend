@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded"/>
+<title>Sample Submission Form</title>
+</head>
+<body>
+    <!-- form for adding songs -->
+    <form method="POST" action=""> {% csrf_token %}
+      {{ userF.as_p }}
+      <input type="submit" name = "register" value= "Create Account"/>
+    </form>
+    {% if userRet %}
+      <p> {{ userRet }} has been added </p>
+    {% endif %}
+
+    <!-- form for adding albums -->
+    <form method="POST" action=""> {% csrf_token %}
+        {{ userF.as_p }}
+        <input type="submit" name = "register" value= "Create Account"/>
+      </form>
+      {% if userRet %}
+        <p> {{ userRet }} has been added </p>
+      {% endif %}
+    
+</body>
+</html>
